@@ -128,5 +128,3 @@ class Notification(db.Model,SerializerMixin):
 
     #serialise rules
     serialize_rules=('-user')
-
-
