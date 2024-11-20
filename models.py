@@ -77,7 +77,7 @@ class Bid(db.Model,SerializerMixin):
     __tablename__ = 'bids'
     bid_id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Float, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now())
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.now())
     bidder_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey('items.item_id'), nullable=False)
 
@@ -93,7 +93,7 @@ class Bid(db.Model,SerializerMixin):
 #     history_id = db.Column(db.Integer, primary_key=True)
 #     bid_id = db.Column(db.Integer, db.ForeignKey('bids.bid_id'), nullable=False)
 #     auction_id = db.Column(db.Integer, db.ForeignKey('auctions.auction_id'), nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.now())
+#     timestamp = db.Column(db.DateTime, default=datetime.datetime.now())
 
 
 class Report(db.Model,SerializerMixin):
@@ -101,13 +101,13 @@ class Report(db.Model,SerializerMixin):
     report_id = db.Column(db.Integer, primary_key=True)
     report_type = db.Column(db.String(50), nullable=False)
     generated_by = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    generated_at = db.Column(db.DateTime, default=datetime.now())
+    generated_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
 class AuditLog(db.Model,SerializerMixin):
     __tablename__ = 'audit_logs'
     log_id = db.Column(db.Integer, primary_key=True)
     action = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now())
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
 
     #relationships
@@ -121,7 +121,7 @@ class Notification(db.Model,SerializerMixin):
     notification_id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now())
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.now())
 
     #relationships
     user=db.relationship("User", back_populates='notifications')
