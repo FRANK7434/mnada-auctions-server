@@ -13,4 +13,5 @@ pygame==2.6.1
 SQLAlchemy==2.0.36
 typing_extensions==4.12.2
 Werkzeug==3.0.4
-marshmallow-sqlalchemy==0.29.0
+sqlalchemy-serializer==1.4.1
+
